@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}Control Center | VGG{% endblock %}
+{% block content %}
+  <h2>Admin Control Center</h2>
+  <form method="POST">
+    <select name="action">
+      <option value="ban">Ban User</option>
+      <option value="unban">Unban User</option>
+      <option value="blockip">Block IP</option>
+      <option value="delete">Delete User</option>
+    </select>
+    <input name="value" placeholder="Username or IP">
+    <button type="submit">Apply</button>
+  </form>
+  <h3>Help Tickets</h3>
+  {% for t in tickets %}
+    <div><strong>{{ t.username }}</strong>: {{ t.message }} ({{ t.created_at }})</div>
+  {% else %}
+    <p>No tickets</p>
+  {% endfor %}
+{% endblock %}
