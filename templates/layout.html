@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}VGG{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <style>
+      body { font-family: sans-serif; text-align: center; background: #f0f0f0; }
+      header { margin: 20px; }
+      .lang-switch a { margin: 0 5px; }
+      input, button { padding: 10px; margin: 5px; width: 250px; }
+      .flash { color: red; }
+    </style>
+</head>
+<body>
+  <header>
+    <img src="{{ url_for('static', filename=logo) }}" width="120">
+    <div class="lang-switch">
+      {% for code, label in LANG.items() %}
+        <a href="{{ url_for('set_lang', lang=code) }}">{{ label }}</a>
+      {% endfor %}
+    </div>
+  </header>
+  <div class="flash">{% with messages = get_flashed_messages() %}
+    {% for m in messages %}{{ m }}<br>{% endfor %}
+  {% endwith %}</div>
+  {% block content %}{% endblock %}
+</body>
+</html>
