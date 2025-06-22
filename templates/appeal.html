@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}Ban Appeal | VGG{% endblock %}
+{% block content %}
+  <form method="POST">
+    <input name="username" placeholder="Username"><br>
+    <textarea name="message" placeholder="Appeal message"></textarea><br>
+    <button type="submit">Submit Appeal</button>
+  </form>
+{% endblock %}
